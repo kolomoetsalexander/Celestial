@@ -61,12 +61,12 @@ KeplerElem stateToKepler(const State& state, double mu){
     Eigen::Vector3d e = ((state.v).cross(h)/mu - state.r/r_mod);
     kepler.e = e.norm();
     Eigen::Vector3d n = z.cross(h);
-    kepler.Omega = std::atan(n[1] / n[0]);
-    double cosW = (n.dot(e))/n.norm()*e.norm();
-    double sinW = (h.dot(n.cross(e)))/n.norm()*e.norm()*h.norm();
+    kepler.Omega = std::atan2(n[1], n[0]);
+    double cosW = (n.dot(e))/(n.norm()*e.norm());
+    double sinW = (h.dot(n.cross(e)))/(n.norm()*e.norm()*h.norm());
     kepler.w = std::atan2(sinW, cosW);
-    double cosNu = (e.dot(state.r))/e.norm()*r_mod;
-    double sinNu = (h.dot(e.cross(state.r)))/e.norm()*h.norm()*r_mod;
+    double cosNu = (e.dot(state.r))/(e.norm()*r_mod);
+    double sinNu = (h.dot(e.cross(state.r)))/(e.norm()*h.norm()*r_mod);
     kepler.nu = std::atan2(sinNu, cosNu);
 
 }
