@@ -25,7 +25,7 @@ State keplerToState(const KeplerElem& elements, double mu){
     double p = elements.a * (1 - elements.e * elements.e);
     double r = p / (1 + elements.e * cosNu);
     Eigen::Vector3d r_M(r * cosNu, r * sinNu, 0.0);
-    Eigen::Vector3d v_M(-elements.e * sinNu, 1 + elements.e * cosNu, 0.0);
+    Eigen::Vector3d v_M(-elements.e * sinNu, elements.e + cosNu, 0.0);
     v_M *= std::sqrt(mu / p);
     Eigen::Matrix3d R3w;
     R3w << cosW, -sinW, 0.0,
@@ -68,7 +68,7 @@ KeplerElem stateToKepler(const State& state, double mu){
     double cosNu = (e.dot(state.r))/(e.norm()*r_mod);
     double sinNu = (h.dot(e.cross(state.r)))/(e.norm()*h.norm()*r_mod);
     kepler.nu = std::atan2(sinNu, cosNu);
-
+    return kepler;
 }
 
 
