@@ -1,6 +1,6 @@
 #include <Eigen/Dense>
 #include <cmath>
-
+#include <iostream>
 struct Keplerian{
     double a;
     double i;
@@ -28,20 +28,32 @@ Cartesian keplerianToCartesian(const Keplerian& elements, const double mu){
     const double r = p / (1 + elements.e * cosNu);
     const Eigen::Vector3d r_M(r * cosNu, r * sinNu, 0.0);
     const Eigen::Vector3d v_M(-elements.e * sinNu * std::sqrt(mu / p), (elements.e + cosNu) * std::sqrt(mu / p), 0.0);
-    const Eigen::Matrix3d R3w {cosW, -sinW, 0.0, sinW, cosW, 0.0, 0.0, 0.0, 1.0};
-    const Eigen::Matrix3d R1i {1.0, 0.0, 0.0, 0.0, cosi, -sini, 0.0, sini, cosi};
-    const Eigen::Matrix3d R3Om {cosOm, -sinOm, 0.0, sinOm, cosOm, 0.0, 0.0, 0.0, 1.0};
+    const Eigen::Matrix3d R3w {
+        cosW, -sinW, 0.0, 
+        sinW, cosW, 0.0, 
+        0.0, 0.0, 1.0
+    };
+    const Eigen::Matrix3d R1i {
+        1.0, 0.0, 0.0, 
+        0.0, cosi, -sini, 
+        0.0, sini, cosi
+    };
+    const Eigen::Matrix3d R3Om {
+        cosOm, -sinOm, 0.0, 
+        sinOm, cosOm, 0.0, 
+        0.0, 0.0, 1.0
+    };
     const Eigen::Matrix3d R = R3Om * R1i * R3w;
     const Eigen::Vector3d r_O = R * r_M;
     const Eigen::Vector3d v_O = R * v_M;
-    return {.r = r_O, .v = v_O};
+    return {.v = v_O, .r = r_O};
 }
 
 Keplerian cartesianToKeplerian(const Cartesian& state, const double mu){
     const double r_mod = (state.r).norm();
     const double v_mod = (state.v).norm();
     const double eps = v_mod * v_mod / 2 - mu / r_mod;
-    const double a = - mu / (2* eps);
+    const double a = - mu / (2 * eps);
     const Eigen::Vector3d h = (state.r).cross(state.v);
     const Eigen::Vector3d z(0.0, 0.0, 1.0);
     const double i = std::acos(h.dot(z)/h.norm());
@@ -55,9 +67,9 @@ Keplerian cartesianToKeplerian(const Cartesian& state, const double mu){
     const double cosNu = (e.dot(state.r))/(e.norm()*r_mod);
     const double sinNu = (h.dot(e.cross(state.r)))/(e.norm()*h.norm()*r_mod);
     const double nu = std::atan2(sinNu, cosNu);
-    return {.a = a, .e = e_mod, .i = i, .nu = nu, .Omega = Omega, .w = w};
+    return {.a = a, .i = i, .Omega = Omega, .w = w, .nu = nu, .e = e_mod};
 }
 
 int main(){
-    // to be continued
+    std::cout << "genious" << std::endl;
 }
