@@ -1,6 +1,6 @@
 #include <Eigen/Dense>
 #include <cmath>
-#include <iostream>
+
 struct Keplerian{
     double a;
     double i;
@@ -68,8 +68,4 @@ Keplerian cartesianToKeplerian(const Cartesian& state, const double mu){
     const double sinNu = (h.dot(e.cross(state.r)))/(e.norm()*h.norm()*r_mod);
     const double nu = std::atan2(sinNu, cosNu);
     return {.a = a, .i = i, .Omega = Omega, .w = w, .nu = nu, .e = e_mod};
-}
-
-int main(){
-    std::cout << "genious" << std::endl;
 }
