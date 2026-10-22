@@ -78,9 +78,9 @@ OrbitElements cartesianToKeplerian(const Cartesian& state, const double mu){
     const double n_mod = n.norm();
     const double Omega = std::atan2(n[1], n[0]);
     //Допуск на погрешность расчетов
-    const double tol = 1e-10;
+    const double delta = 1e-9;
     //Круговая орбита
-    if (e_mod < tol){
+    if (e_mod < delta){
         const double cosU = n.dot(state.r) / (n_mod * r_mod);
         const double sinU = h.dot(n.cross(state.r))/(h_mod * n_mod * r_mod);
         const double u = std::atan2(sinU, cosU);
@@ -88,7 +88,7 @@ OrbitElements cartesianToKeplerian(const Cartesian& state, const double mu){
     }
     //Элипс или парабола
     const double energyScale = std::max(v_mod * v_mod / 2.0, mu / r_mod);
-    const bool parabolic = std::abs(eps) <= tol * energyScale;
+    const bool parabolic = std::abs(eps) <= delta * energyScale;
     const double cosW = n.dot(e) / (n_mod * e_mod);
     const double sinW = h.dot(n.cross(e)) / (n_mod * e_mod * h_mod);
     const double w = std::atan2(sinW, cosW);
