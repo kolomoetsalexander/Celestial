@@ -11,6 +11,7 @@ struct Keplerian{
     double nu;
     double e;
 };
+
 struct CircularOrbit{
     double radius;
     double i;
