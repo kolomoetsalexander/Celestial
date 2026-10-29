@@ -1,3 +1,3 @@
 #pragma once
-#include "library/OrbitTypes.hpp"
+#include "OrbitTypes.hpp"
 Keplerian cartesianToKeplerian(const Cartesian& state, const double mu);

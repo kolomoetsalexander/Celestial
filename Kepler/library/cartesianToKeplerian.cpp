@@ -1,6 +1,6 @@
 #include <cmath>
 #include <Eigen/Dense>
-#include "library/cartesianToKeplerian.hpp"
+#include "cartesianToKeplerian.hpp"
 
 Keplerian cartesianToKeplerian(const Cartesian& state, const double mu){
     const double r_mod = (state.r).norm();
