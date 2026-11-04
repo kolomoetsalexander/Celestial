@@ -21,13 +21,13 @@ Cartesian keplerianToCartesian(const Keplerian& elements, const double mu){
         0.0, 0.0, 1.0;
     
     Eigen::Matrix3d R1i;
-        R1i << 1.0, 0.0, 0.0, 
-        0.0, cosi, -sini, 
+        R1i << 1.0, 0.0, 0.0,
+        0.0, cosi, -sini,
         0.0, sini, cosi;
     
     Eigen::Matrix3d R3Om;
-        R3Om << cosOm, -sinOm, 0.0, 
-        sinOm, cosOm, 0.0, 
+        R3Om << cosOm, -sinOm, 0.0,
+        sinOm, cosOm, 0.0,
         0.0, 0.0, 1.0;
 
     const Eigen::Matrix3d R = R3Om * R1i * R3w;

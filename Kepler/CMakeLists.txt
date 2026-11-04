@@ -9,6 +9,9 @@ add_subdirectory(
 add_library(KeplerConversions STATIC
     library/cartesianToKeplerian.cpp
     library/keplerianToCartesian.cpp
+    library/trueToEccentric.cpp
+    library/eccentricToTrue.cpp
+    library/solveKeplerEquation.cpp
 )
 
 target_compile_features(KeplerConversions PUBLIC cxx_std_17)
