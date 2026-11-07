@@ -3,7 +3,7 @@
 
 double solveKeplerEquation(const double M, const double e){
     const double EPS = 1e-10;
-    const int MAX_ITERATIONS = 100;
+    const int MAX_ITERATIONS = 101;
     double E = M;
 
     for (int i = 0; i < MAX_ITERATIONS; ++i){
