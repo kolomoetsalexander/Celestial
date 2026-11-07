@@ -13,6 +13,9 @@ Keplerian cartesianToKeplerian(const Cartesian& state, const double mu){
     const Eigen::Vector3d e = ((state.v).cross(h)/mu - state.r/r_mod);
     const double e_mod = e.norm();
     const Eigen::Vector3d n = z.cross(h);
+    if(n[0] == 0.0 && n[1] == 0.0){
+        return {.a = a, .i = i, .Omega = 0.0, .w = 0.0, .nu = 0.0, .e = e_mod}; 
+    }
     const double Omega = std::atan2(n[1], n[0]);
     const double cosW = (n.dot(e))/(n.norm()*e.norm());
     const double sinW = (h.dot(n.cross(e)))/(n.norm()*e.norm()*h.norm());

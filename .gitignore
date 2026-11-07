@@ -67,3 +67,5 @@ vcpkg_installed/
 Testing/
 .cache/
 third_party/
+.vscode/
+.idea/
