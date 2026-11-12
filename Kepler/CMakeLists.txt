@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(Kepler LANGUAGES CXX)
+project(Kepler)
 
 add_subdirectory(
     ../third_party/eigen
