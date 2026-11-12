@@ -8,7 +8,7 @@ A C++17 library for orbital mechanics with Python bindings using nanobind.
 Celestial/
 ├── Kepler/
 │   ├── CMakeLists.txt
-│   ├── library/
+│   ├── HarmoniMundi/
 │   │   ├── CMakeLists.txt
 │   │   ├── OrbitTypes.hpp
 │   │   └── *.hpp / *.cpp
@@ -20,7 +20,7 @@ Celestial/
     └── eigen/
 ```
 
-- **library/** — C++ orbital mechanics implementations.
+- **HarmoniaMundi/** — C++ orbital mechanics implementations.
 - **python/** — Python bindings built with nanobind.
 - **third_party/** — External dependencies (Eigen).
 
