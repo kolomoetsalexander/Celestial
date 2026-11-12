@@ -11,10 +11,10 @@ execute_process(
 
 find_package(nanobind CONFIG REQUIRED)
 
-nanobind_add_module(celestial
+nanobind_add_module(HarmoniaMundi
     bind.cpp
 )
 
-target_link_libraries(celestial PRIVATE
+target_link_libraries(HarmoniaMundi PRIVATE
     KeplerConversions
 )

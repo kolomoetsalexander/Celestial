@@ -13,8 +13,8 @@
 namespace nb = nanobind;
 using namespace nb::literals;
 
-NB_MODULE(celestial, m){
-    m.doc() = "Celestial mechanics library";
+NB_MODULE(HarmoniaMundi, m){
+    m.doc() = "HarmoniaMundi";
     nb::class_<Keplerian>(m, "Keplerian")
         .def(nb::init<>())
         .def_rw("a", &Keplerian::a)

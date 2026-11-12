@@ -1,9 +1,9 @@
 
-#include "library/keplerianToCartesian.hpp"
-#include "library/cartesianToKeplerian.hpp"
-#include "library/trueToEccentric.hpp"
-#include "library/eccentricToTrue.hpp"
-#include "library/solveKeplerEquation.hpp"
+#include "HarmoniaMundi/keplerianToCartesian.hpp"
+#include "HarmoniaMundi/cartesianToKeplerian.hpp"
+#include "HarmoniaMundi/trueToEccentric.hpp"
+#include "HarmoniaMundi/eccentricToTrue.hpp"
+#include "HarmoniaMundi/solveKeplerEquation.hpp"
 #include <iostream>
 #include <cmath>
 
