@@ -9,13 +9,15 @@ add_subdirectory(
 
 add_subdirectory(library)
 
-add_executable(kepler main.cpp)
+option(BUILD_EXAMPLES "Build C++ examples" OFF)
 
-target_compile_features(kepler PRIVATE cxx_std_17)
+if(BUILD_EXAMPLES)
+    add_executable(kepler main.cpp)
 
-target_link_libraries(kepler PRIVATE
-    KeplerConversions
-)
+    target_compile_features(kepler PRIVATE cxx_std_17)
+
+    target_link_libraries(kepler PRIVATE KeplerConversions)
+endif()
 
 option(BUILD_PYTHON_BINDINGS "Build Python bindings" OFF)
 

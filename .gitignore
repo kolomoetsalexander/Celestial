@@ -42,6 +42,7 @@
 build/
 Build/
 build-*/
+build-cpp/
 
 # CMake generated files
 CMakeFiles/
@@ -69,3 +70,4 @@ Testing/
 third_party/
 .vscode/
 .idea/
+.venv/
