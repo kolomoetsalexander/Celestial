@@ -7,7 +7,7 @@ add_subdirectory(
     ${CMAKE_BINARY_DIR}/eigen
 )
 
-add_subdirectory(library)
+add_subdirectory(HarmoniaMundi)
 
 option(BUILD_EXAMPLES "Build C++ examples" OFF)
 
